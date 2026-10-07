@@ -756,14 +756,14 @@
     <div class="contacts__grid">
       <div class="contacts__block reveal">
         <p class="contacts__label">Телефон</p>
-        <a href="tel:+79000000000" class="contacts__value">+7 (900) 000-00-00</a>
+        <a href="tel:+79920535282" class="contacts__value">+7 (992) 053-52-82</a>
         <p class="contacts__label">Email для продюсеров</p>
         <a href="mailto:booking@yana-schatz.ru" class="contacts__value">booking@yana-schatz.ru</a>
         <p class="contacts__label">Telegram</p>
         <a href="https://t.me/YanaSchatzProject" target="_blank" rel="noopener" class="contacts__value">@YanaSchatzProject</a>
         <div class="contacts__buttons">
           <a href="https://t.me/YanaSchatzProject" target="_blank" rel="noopener" class="btn btn--primary">Написать в Telegram</a>
-          <a href="tel:+79000000000" class="btn btn--outline">Позвонить</a>
+          <a href="tel:+79920535282" class="btn btn--outline">Позвонить</a>
         </div>
       </div>
       <div class="contacts__block reveal">
@@ -895,7 +895,6 @@
   const originalCount = originalItems.length;
   if (originalCount === 0) return;
 
-  // Клонируем 2 раза для бесконечности (3 набора всего)
   for (let i = 0; i < 2; i++) {
     originalItems.forEach(item => {
       const clone = item.cloneNode(true);
@@ -906,7 +905,7 @@
 
   let setWidth = 0;
   let position = 0;
-  const speed = 25; // пикселей в секунду
+  const speed = 25;
   let isPaused = false;
   let isDragging = false;
   let dragDirection = null;
@@ -1015,7 +1014,6 @@
   carousel.addEventListener('mousedown', startDrag);
   carousel.addEventListener('touchstart', startDrag, { passive: true });
 
-  // Пересчёт на resize
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
