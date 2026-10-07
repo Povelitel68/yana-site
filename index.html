@@ -187,9 +187,26 @@
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 78% 22%, rgba(176, 24, 46, 0.07), transparent 55%); pointer-events: none; }
   .hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 2; }
   .hero__content { max-width: 620px; }
-  .hero__eyebrow { margin-bottom: 40px; }
+  .hero__eyebrow {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .hero__eyebrow .eyebrow { display: inline-flex; }
   .hero__title { font-family: var(--font-display); font-size: clamp(3rem, 9vw, 8.5rem); font-weight: 300; line-height: 0.92; letter-spacing: 0.06em; color: var(--white); margin-bottom: 44px; }
-  .hero__manifest { font-family: var(--font-hand); font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 600; color: var(--red); margin-bottom: 32px; transform: rotate(-2deg); display: inline-block; text-shadow: 0 0 24px rgba(176, 24, 46, 0.45); }
+  .hero__manifest {
+    font-family: var(--font-hand);
+    font-size: clamp(0.95rem, 4.2vw, 3rem);
+    font-weight: 600;
+    color: var(--red);
+    margin-bottom: 32px;
+    letter-spacing: 0.01em;
+    transform: rotate(-2deg);
+    display: inline-block;
+    text-shadow: 0 0 24px rgba(176, 24, 46, 0.45);
+    white-space: nowrap;
+  }
   .hero__text { color: var(--white-soft); font-size: 1rem; line-height: 1.95; margin-bottom: 48px; max-width: 520px; }
   .hero__buttons { display: flex; gap: 18px; flex-wrap: wrap; }
   .hero__photo-wrap { position: relative; display: flex; justify-content: center; }
@@ -202,28 +219,17 @@
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: center 25%;
-    filter: grayscale(100%) contrast(1.08);
     transform: scale(1.02);
-    transition: filter 1s ease;
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .hero__photo-inner:hover .hero__photo { filter: grayscale(0%) contrast(1.02); }
+  .hero__photo-inner:hover .hero__photo { transform: scale(1.04); }
   .hero__photo-inner::after { content: ''; position: absolute; inset: 0; border: var(--line-hair) solid rgba(201, 169, 97, 0.35); pointer-events: none; }
-
-  .hero__bottom {
-    position: absolute; bottom: 40px; left: 0; right: 0;
-    display: flex; justify-content: space-between;
-    padding: 0 40px;
-    font-size: 0.62rem; letter-spacing: 0.35em;
-    color: var(--white-dim); text-transform: uppercase;
-    z-index: 2; pointer-events: none; font-weight: 400;
-  }
 
   @media (max-width: 900px) {
     .hero { padding: 120px 0 90px; min-height: auto; }
     .hero__inner { grid-template-columns: 1fr; gap: 50px; }
     .hero__photo-wrap { order: -1; }
     .hero__photo-inner { max-width: 100%; aspect-ratio: 1 / 1; }
-    .hero__bottom { position: static; padding: 0; margin-top: 60px; }
   }
 
   /* ===== БЕГУЩАЯ СТРОКА ===== */
@@ -284,11 +290,25 @@
     width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
-    object-position: center 20%;
-    filter: grayscale(100%) contrast(1.08);
+    object-position: center 30%;
   }
   .about__photo::after { content: ''; position: absolute; inset: 0; border: var(--line-hair) solid rgba(201, 169, 97, 0.28); pointer-events: none; }
-  .play-btn { position: absolute; bottom: 28px; left: 28px; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(12px); border: var(--line-hair) solid var(--gold); color: var(--gold); padding: 15px 24px; display: flex; align-items: center; gap: 12px; font-size: 0.64rem; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 500; transition: all .35s ease; }
+  .play-btn {
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    border: var(--line-hair) solid var(--gold);
+    color: var(--gold);
+    padding: 15px 24px;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.64rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all .35s ease;
+  }
   .play-btn svg { width: 14px; height: 14px; }
   .play-btn:hover { background: var(--gold); color: #0a0a0a; }
   .play-btn.is-playing { background: var(--red); color: #fff; border-color: var(--red); }
@@ -299,6 +319,7 @@
   @media (max-width: 900px) {
     .about__inner { grid-template-columns: 1fr; gap: 50px; }
     .about__quote { font-size: 1.85rem; }
+    .play-btn { top: 16px; left: 16px; padding: 12px 18px; font-size: 0.58rem; letter-spacing: 0.28em; }
   }
 
   /* ===== СТИХ ===== */
@@ -324,11 +345,9 @@
   .service-card__num { font-family: var(--font-accent); font-size: 1rem; letter-spacing: 0.5em; color: var(--red); margin-bottom: 28px; }
   .service-card__title { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; margin-bottom: 22px; }
   .service-card__text { color: var(--white-soft); font-size: 0.94rem; margin-bottom: 32px; line-height: 1.9; }
-  .service-card__list { list-style: none; margin-bottom: 36px; }
+  .service-card__list { list-style: none; margin-bottom: 8px; }
   .service-card__list li { color: var(--white-dim); font-size: 0.88rem; padding: 12px 0; border-bottom: var(--line-hair) solid var(--line-soft); position: relative; padding-left: 26px; }
   .service-card__list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 0.9rem; top: 12px; opacity: 0.7; }
-  .service-card__link { display: inline-block; font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); border-bottom: var(--line-hair) solid transparent; padding-bottom: 3px; font-weight: 500; transition: all .35s ease; }
-  .service-card__link:hover { color: var(--red); border-color: var(--red); }
   @media (max-width: 900px) { .services__grid { grid-template-columns: 1fr; gap: 24px; } .service-card { padding: 44px 30px; } }
 
   /* ===== ГЕОГРАФИЯ ===== */
@@ -451,9 +470,13 @@
 <section class="hero" id="hero">
   <div class="container hero__inner">
     <div class="hero__content">
-      <p class="eyebrow hero__eyebrow">Стендап-поэтесса · Артистка · Ведущая</p>
+      <div class="hero__eyebrow">
+        <span class="eyebrow">Стенд ап поэтесса</span>
+        <span class="eyebrow">Ведущая вашего мероприятия</span>
+        <span class="eyebrow">Артистка</span>
+      </div>
       <h1 class="hero__title">ЯНА<br>ШАТЦ</h1>
-      <p class="hero__manifest">Я, которая не молчит</p>
+      <p class="hero__manifest">Я, которая не молчит...</p>
       <p class="hero__text">
         Поэтические вечера, стенд ап поэзия, кабаре и музыкальные перформансы — о том, о чём в приличном обществе не принято говорить вслух.
       </p>
@@ -467,10 +490,6 @@
         <img src="images/img-2468.png" alt="Яна Шатц — портрет" class="hero__photo">
       </div>
     </div>
-  </div>
-  <div class="hero__bottom">
-    <span>01 / Главная</span>
-    <span>Листай вниз</span>
   </div>
 </section>
 
@@ -505,7 +524,7 @@
 <section class="about section" id="about">
   <div class="container about__inner">
     <div class="about__photo reveal">
-      <img src="images/IMG_20261002_225644_625.jpg" alt="Яна Шатц у окна" class="about__img">
+      <img src="images/Yana.png" alt="Яна Шатц" class="about__img">
       <button class="play-btn" id="playBtn" aria-label="Слушать голос">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         <span class="play-btn__text">Слушать голос</span>
@@ -518,7 +537,10 @@
         Проект мультиканальный, но каждый формат 18+. И не потому, что это что-то запретное, а потому что это затрагивает взрослые темы.
       </p>
       <p class="body-text reveal">
-        «Об этом вслух не говорят» — это первые слова, с которых начинаются мои перформансы. Проект уникален тем, что нет аналогов. Он может быть как индивидуальной программой, так и вписаться в любой формат. Будь то корпоратив, день рождения, девичник или просто вечер в ресторане. Коллаборация с любыми артистами, музыкальными инструментами. Для каждого события используется индивидуальный подход и программа. Все стихотворения лёгкие и с юмором — вам не придётся думать, только созидать и наслаждаться.
+        «Об этом вслух не говорят» — это первые слова, с которых начинаются мои перформансы. Проект уникален тем, что нет аналогов. Он может быть как индивидуальной программой, так и вписаться в любой формат. Будь то корпоратив, день рождения, девичник или просто вечер в ресторане. Коллаборация с любыми артистами, музыкальными инструментами. Для каждого события используется индивидуальный подход и программа.
+      </p>
+      <p class="body-text reveal">
+        Все стихотворения лёгкие и с юмором — вам не придётся думать, только созидать и наслаждаться.
       </p>
       <p class="about__quote reveal">Об этом вслух не говорят.</p>
     </div>
@@ -554,7 +576,7 @@
     </div>
     <div class="clip__wrap reveal">
       <video class="clip__video" controls preload="metadata" playsinline>
-        <source src="images/clip84193249_456239272video_278886b9_advCYE_iPv5FEE496i3e8d26pYpM.mp4" type="video/mp4">
+        <source src="images/Клип.MP4" type="video/mp4">
         Ваш браузер не поддерживает видео.
       </video>
     </div>
@@ -581,7 +603,6 @@
           <li>Стенд ап поэзия 18+</li>
           <li>Кабаре, мюзиклы, спектакли</li>
         </ul>
-        <a href="#contacts" class="service-card__link">Забронировать →</a>
       </article>
       <article class="service-card reveal">
         <div class="service-card__num">02</div>
@@ -595,7 +616,6 @@
           <li>Вечеринки</li>
           <li>Дни рождения</li>
         </ul>
-        <a href="#contacts" class="service-card__link">Забронировать →</a>
       </article>
     </div>
   </div>
