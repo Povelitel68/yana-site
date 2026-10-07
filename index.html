@@ -187,12 +187,7 @@
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 78% 22%, rgba(176, 24, 46, 0.07), transparent 55%); pointer-events: none; }
   .hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 2; }
   .hero__content { max-width: 620px; }
-  .hero__eyebrow {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 40px;
-  }
+  .hero__eyebrow { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
   .hero__eyebrow .eyebrow { display: inline-flex; }
   .hero__title { font-family: var(--font-display); font-size: clamp(3rem, 9vw, 8.5rem); font-weight: 300; line-height: 0.92; letter-spacing: 0.06em; color: var(--white); margin-bottom: 44px; }
   .hero__manifest {
@@ -210,11 +205,7 @@
   .hero__text { color: var(--white-soft); font-size: 1rem; line-height: 1.95; margin-bottom: 48px; max-width: 520px; }
   .hero__buttons { display: flex; gap: 18px; flex-wrap: wrap; }
   .hero__photo-wrap { position: relative; display: flex; justify-content: center; }
-  .hero__photo-inner {
-    position: relative; width: 100%; max-width: 540px;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-  }
+  .hero__photo-inner { position: relative; width: 100%; max-width: 540px; aspect-ratio: 4 / 5; overflow: hidden; }
   .hero__photo {
     width: 100%; height: 100%;
     object-fit: cover;
@@ -257,56 +248,27 @@
     transition: border-color .4s ease, transform .6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow .6s ease;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
   }
-  .afisha__link:hover {
-    border-color: var(--gold);
-    transform: translateY(-6px);
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
-  }
-  .afisha__img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-  }
+  .afisha__link:hover { border-color: var(--gold); transform: translateY(-6px); box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7); }
+  .afisha__img { width: 100%; height: auto; display: block; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
   .afisha__link:hover .afisha__img { transform: scale(1.03); }
-  .afisha__caption {
-    margin-top: 28px;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.05rem;
-    color: var(--white-dim);
-    letter-spacing: 0.08em;
-  }
-  @media (max-width: 900px) {
-    .afisha { padding: 80px 0 20px; }
-    .afisha__caption { font-size: 0.9rem; }
-  }
+  .afisha__caption { margin-top: 28px; font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--white-dim); letter-spacing: 0.08em; }
+  @media (max-width: 900px) { .afisha { padding: 80px 0 20px; } .afisha__caption { font-size: 0.9rem; } }
 
   /* ===== О ПРОЕКТЕ ===== */
   .about { background: var(--bg-3); }
   .about__inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; align-items: center; }
   .about__photo { position: relative; }
-  .about__img {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    object-position: center 30%;
-  }
+  .about__img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center 30%; }
   .about__photo::after { content: ''; position: absolute; inset: 0; border: var(--line-hair) solid rgba(201, 169, 97, 0.28); pointer-events: none; }
   .play-btn {
-    position: absolute;
-    top: 28px;
-    left: 28px;
+    position: absolute; top: 28px; left: 28px;
     background: rgba(10, 10, 10, 0.85);
     backdrop-filter: blur(12px);
     border: var(--line-hair) solid var(--gold);
     color: var(--gold);
     padding: 15px 24px;
     display: flex; align-items: center; gap: 12px;
-    font-size: 0.64rem;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    font-weight: 500;
+    font-size: 0.64rem; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 500;
     transition: all .35s ease;
   }
   .play-btn svg { width: 14px; height: 14px; }
@@ -382,6 +344,9 @@
     width: 100%;
     overflow: hidden;
     padding: 30px 0;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
             mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
   }
@@ -389,19 +354,10 @@
     display: flex;
     align-items: center;
     width: max-content;
-    animation: galleryScroll 240s linear infinite;
     will-change: transform;
-    transform: translateZ(0);
     backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
   }
-  .gallery-carousel:hover .gallery-carousel__track {
-    animation-play-state: paused;
-  }
-  @keyframes galleryScroll {
-    from { transform: translate3d(0, 0, 0); }
-    to { transform: translate3d(-50%, 0, 0); }
-  }
-
   .gallery-carousel__item {
     flex: 0 0 320px;
     margin-right: 18px;
@@ -419,6 +375,8 @@
     filter: grayscale(100%) contrast(1.05);
     transition: filter 1.8s cubic-bezier(0.22, 1, 0.36, 1),
                 transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    -webkit-user-drag: none;
   }
   .gallery-carousel__item::after {
     content: '';
@@ -431,21 +389,15 @@
   .gallery-carousel__item:hover img { transform: scale(1.05); }
   .gallery-carousel__item:hover::after { border-width: var(--line-hair); }
 
-  /* Загораются при появлении секции на экране */
   .gallery-carousel.is-visible .gallery-carousel__item img {
     filter: grayscale(0%) contrast(1.05);
   }
 
   @media (max-width: 900px) {
-    .gallery-carousel__item {
-      flex: 0 0 240px;
-      margin-right: 12px;
-    }
-    .gallery-carousel__track { animation-duration: 180s; }
+    .gallery-carousel__item { flex: 0 0 240px; margin-right: 12px; }
   }
   @media (max-width: 500px) {
     .gallery-carousel__item { flex: 0 0 200px; }
-    .gallery-carousel__track { animation-duration: 160s; }
   }
 
   /* ===== КОНТАКТЫ ===== */
@@ -754,9 +706,8 @@
   </div>
 
   <div class="gallery-carousel reveal" id="galleryCarousel">
-    <div class="gallery-carousel__track">
+    <div class="gallery-carousel__track" id="galleryTrack">
 
-      <!-- Группа 1 -->
       <figure class="gallery-carousel__item">
         <img src="images/IMG_20261004_003016_541.jpg" alt="Яна Шатц">
       </figure>
@@ -789,41 +740,6 @@
       </figure>
       <figure class="gallery-carousel__item">
         <img src="images/tjLQ79RiOrc.jpg" alt="Яна Шатц">
-      </figure>
-
-      <!-- Группа 2 (дубль для бесконечного цикла) -->
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/IMG_20261004_003016_541.jpg" alt="">
-      </figure>
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/IMG_20261002_225644_625.jpg" alt="">
-      </figure>
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/IMG_20261002_225644_623.jpg" alt="">
-      </figure>
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/0ZfLsyR87tM.jpg" alt="">
-      </figure>
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/IMG_20261004_003016_547.jpg" alt="">
-      </figure>
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/photo_5334664151655194654_y.jpg" alt="">
-      </figure>
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/photo_5334664151655194655_y.jpg" alt="">
-      </figure>
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/AYulbytfyOw.jpg" alt="">
-      </figure>
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/q8fEr2WcAnE.jpg" alt="">
-      </figure>
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/olJe6Jlwd9Q.jpg" alt="">
-      </figure>
-      <figure class="gallery-carousel__item" aria-hidden="true">
-        <img src="images/tjLQ79RiOrc.jpg" alt="">
       </figure>
 
     </div>
@@ -967,6 +883,152 @@
     });
   }, { threshold: 0.15 });
   observer.observe(carousel);
+})();
+
+/* ===== КАРУСЕЛЬ: бесконечная + свайп + автовозобновление через 2 сек ===== */
+(function() {
+  const carousel = document.getElementById('galleryCarousel');
+  const track = document.getElementById('galleryTrack');
+  if (!carousel || !track) return;
+
+  const originalItems = Array.from(track.children);
+  const originalCount = originalItems.length;
+  if (originalCount === 0) return;
+
+  // Клонируем 2 раза для бесконечности (3 набора всего)
+  for (let i = 0; i < 2; i++) {
+    originalItems.forEach(item => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  }
+
+  let setWidth = 0;
+  let position = 0;
+  const speed = 25; // пикселей в секунду
+  let isPaused = false;
+  let isDragging = false;
+  let dragDirection = null;
+  let startX = 0, startY = 0;
+  let startPosition = 0;
+  let resumeTimer = null;
+  let lastTime = 0;
+
+  function applyPosition() {
+    track.style.transform = `translate3d(${position}px, 0, 0)`;
+  }
+
+  function recalc() {
+    const first = track.children[0];
+    const secondSetStart = track.children[originalCount];
+    if (!first || !secondSetStart) return;
+    setWidth = secondSetStart.offsetLeft - first.offsetLeft;
+    position = -setWidth;
+    applyPosition();
+  }
+
+  function wrapPosition() {
+    if (setWidth <= 0) return;
+    const min = -2 * setWidth;
+    const max = -setWidth;
+    while (position < min) position += setWidth;
+    while (position > max) position -= setWidth;
+  }
+
+  function tick(time) {
+    if (!lastTime) lastTime = time;
+    const dt = Math.min((time - lastTime) / 1000, 0.1);
+    lastTime = time;
+
+    if (!isPaused) {
+      position -= speed * dt;
+      wrapPosition();
+      applyPosition();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(() => {
+    recalc();
+    requestAnimationFrame(tick);
+  });
+
+  function getPoint(e) {
+    if (e.touches && e.touches[0]) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    return { x: e.clientX, y: e.clientY };
+  }
+
+  function onDrag(e) {
+    if (!isDragging) return;
+    const p = getPoint(e);
+    const dx = p.x - startX;
+    const dy = p.y - startY;
+
+    if (!dragDirection) {
+      if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
+        dragDirection = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+      }
+    }
+
+    if (dragDirection === 'h') {
+      position = startPosition + dx;
+      wrapPosition();
+      applyPosition();
+      if (e.cancelable) e.preventDefault();
+    }
+  }
+
+  function endDrag() {
+    if (!isDragging) return;
+    isDragging = false;
+    document.removeEventListener('mousemove', onDrag);
+    document.removeEventListener('touchmove', onDrag);
+    document.removeEventListener('mouseup', endDrag);
+    document.removeEventListener('touchend', endDrag);
+    document.removeEventListener('touchcancel', endDrag);
+
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => {
+      isPaused = false;
+      lastTime = 0;
+    }, 2000);
+  }
+
+  function startDrag(e) {
+    isDragging = true;
+    isPaused = true;
+    dragDirection = null;
+    const p = getPoint(e);
+    startX = p.x;
+    startY = p.y;
+    startPosition = position;
+    if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
+
+    document.addEventListener('mousemove', onDrag);
+    document.addEventListener('touchmove', onDrag, { passive: false });
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+    document.addEventListener('touchcancel', endDrag);
+  }
+
+  carousel.addEventListener('mousedown', startDrag);
+  carousel.addEventListener('touchstart', startDrag, { passive: true });
+
+  // Пересчёт на resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      recalc();
+      lastTime = 0;
+    }, 150);
+  });
+
+  window.addEventListener('load', () => {
+    recalc();
+    lastTime = 0;
+  });
 })();
 
 /* ===== ПАРАЛЛАКС HERO ===== */
