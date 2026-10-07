@@ -382,22 +382,24 @@
     width: 100%;
     overflow: hidden;
     padding: 30px 0;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
   }
   .gallery-carousel__track {
     display: flex;
     align-items: center;
     width: max-content;
-    animation: galleryScroll 80s linear infinite;
+    animation: galleryScroll 240s linear infinite;
     will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   .gallery-carousel:hover .gallery-carousel__track {
     animation-play-state: paused;
   }
   @keyframes galleryScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
   }
 
   .gallery-carousel__item {
@@ -407,6 +409,7 @@
     overflow: hidden;
     position: relative;
     background: #0a0a0a;
+    transform: translateZ(0);
   }
   .gallery-carousel__item img {
     width: 100%;
@@ -438,10 +441,11 @@
       flex: 0 0 240px;
       margin-right: 12px;
     }
-    .gallery-carousel__track { animation-duration: 60s; }
+    .gallery-carousel__track { animation-duration: 180s; }
   }
   @media (max-width: 500px) {
     .gallery-carousel__item { flex: 0 0 200px; }
+    .gallery-carousel__track { animation-duration: 160s; }
   }
 
   /* ===== КОНТАКТЫ ===== */
@@ -637,7 +641,7 @@
       <h2 class="section__title">Посмотри</h2>
     </div>
     <div class="clip__wrap reveal">
-      <video class="clip__video" controls preload="metadata" playsinline>
+      <video class="clip__video" controls preload="metadata" playsinline poster="images/klip-preview.jpg.png">
         <source src="images/Клип.MP4" type="video/mp4">
         Ваш браузер не поддерживает видео.
       </video>
@@ -948,6 +952,21 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   elements.forEach(el => observer.observe(el));
+})();
+
+/* ===== ГАЛЕРЕЯ: загорается при появлении ===== */
+(function() {
+  const carousel = document.getElementById('galleryCarousel');
+  if (!carousel) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        carousel.classList.add('is-visible');
+        observer.unobserve(carousel);
+      }
+    });
+  }, { threshold: 0.15 });
+  observer.observe(carousel);
 })();
 
 /* ===== ПАРАЛЛАКС HERO ===== */
