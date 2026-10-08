@@ -195,15 +195,13 @@
     font-size: clamp(0.95rem, 4.2vw, 3rem);
     font-weight: 600;
     color: var(--red);
-    margin-bottom: 32px;
+    margin-bottom: 0;
     letter-spacing: 0.01em;
     transform: rotate(-2deg);
     display: inline-block;
     text-shadow: 0 0 24px rgba(176, 24, 46, 0.45);
     white-space: nowrap;
   }
-  .hero__text { color: var(--white-soft); font-size: 1rem; line-height: 1.95; margin-bottom: 48px; max-width: 520px; }
-  .hero__buttons { display: flex; gap: 18px; flex-wrap: wrap; }
   .hero__photo-wrap { position: relative; display: flex; justify-content: center; }
   .hero__photo-inner { position: relative; width: 100%; max-width: 540px; aspect-ratio: 4 / 5; overflow: hidden; }
   .hero__photo {
@@ -320,7 +318,7 @@
   .geo__cities span { color: var(--gold); margin: 0 10px; }
   .geo__note { margin-top: 40px; font-size: 0.7rem; color: var(--white-dim); letter-spacing: 0.35em; text-transform: uppercase; font-weight: 400; }
 
-  /* ===== ШОУ ===== */
+  /* ===== ШОУ (категории) ===== */
   .shows__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
   .show-card { background: var(--bg-2); border: var(--line-hair) solid var(--line); overflow: hidden; transition: all .5s ease; }
   .show-card:hover { border-color: var(--gold); transform: translateY(-6px); }
@@ -329,8 +327,11 @@
   .show-card:hover .show-card__img { transform: scale(1.06); }
   .show-card__body { padding: 36px 32px; }
   .show-card__tag { font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 500; }
-  .show-card__title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; line-height: 1.2; margin-bottom: 18px; color: var(--white); }
-  .show-card__text { font-size: 0.88rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 26px; }
+  .show-card__title { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; line-height: 1.2; margin-bottom: 18px; color: var(--white); }
+  .show-card__text { font-size: 0.88rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 22px; }
+  .show-card__list { list-style: none; margin-bottom: 24px; }
+  .show-card__list li { color: var(--white-dim); font-size: 0.85rem; padding: 8px 0; position: relative; padding-left: 22px; }
+  .show-card__list li::before { content: '◆'; position: absolute; left: 0; color: var(--gold); font-size: 0.55rem; top: 12px; opacity: 0.7; }
   .show-card__link { font-size: 0.64rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); transition: color .3s ease; font-weight: 500; }
   .show-card__link:hover { color: var(--red); }
   @media (max-width: 900px) { .shows__grid { grid-template-columns: 1fr; } }
@@ -495,13 +496,6 @@
       </div>
       <h1 class="hero__title">ЯНА<br>ШАТЦ</h1>
       <p class="hero__manifest">Я, которая не молчит...</p>
-      <p class="hero__text">
-        Поэтические вечера, стенд ап поэзия, кабаре и музыкальные перформансы — о том, о чём в приличном обществе не принято говорить вслух.
-      </p>
-      <div class="hero__buttons">
-        <a href="#contacts" class="btn btn--primary">Забронировать шоу</a>
-        <a href="#shows" class="btn btn--outline">Смотреть выступления</a>
-      </div>
     </div>
     <div class="hero__photo-wrap">
       <div class="hero__photo-inner" id="heroPhoto">
@@ -651,45 +645,62 @@
   </div>
 </section>
 
-<!-- ШОУ -->
+<!-- ШОУ И ВЫСТУПЛЕНИЯ (по категориям) -->
 <section class="shows section" id="shows">
   <div class="container">
     <div class="section__head reveal">
-      <p class="eyebrow">Программы</p>
+      <p class="eyebrow">Мероприятия</p>
       <h2 class="section__title">Шоу и выступления</h2>
     </div>
     <div class="shows__grid">
       <article class="show-card reveal">
         <div class="show-card__img-wrap">
-          <img src="images/IMG_20261002_225644_586.jpg" alt="Женщина женщине — друг" class="show-card__img">
+          <img src="images/IMG_20261004_003016_547.jpg" alt="Шоу" class="show-card__img">
         </div>
         <div class="show-card__body">
-          <p class="show-card__tag">Поэтический вечер</p>
-          <h3 class="show-card__title">«Женщина женщине — друг»</h3>
-          <p class="show-card__text">Интимная поэтическая программа о женщинах, для женщин и с юмором о нас.</p>
+          <p class="show-card__tag">Шоу</p>
+          <h3 class="show-card__title">Авторские шоу</h3>
+          <p class="show-card__text">Поэтические вечера, кабаре, стенд ап, музыкальные перформансы — сцена, где слово становится главным.</p>
+          <ul class="show-card__list">
+            <li>Поэтические вечера</li>
+            <li>Кабаре и мюзиклы</li>
+            <li>Стенд ап 18+</li>
+          </ul>
           <a href="#contacts" class="show-card__link">Забронировать →</a>
         </div>
       </article>
       <article class="show-card reveal">
         <div class="show-card__img-wrap">
-          <img src="images/IMG_20261004_003016_547.jpg" alt="#GOLDENDUST — кабаре-шоу" class="show-card__img">
+          <img src="images/IMG_20261004_003016_548.jpg" alt="Корпоративы" class="show-card__img">
         </div>
         <div class="show-card__body">
-          <p class="show-card__tag">Кабаре · 18+</p>
-          <h3 class="show-card__title">«#GOLDENDUST»</h3>
-          <p class="show-card__text">Музыкально-поэтическое кабаре с живой музыкой. Сцена, джаз, стихи и лёгкое безумие.</p>
+          <p class="show-card__tag">Корпоративы</p>
+          <h3 class="show-card__title">Частные события</h3>
+          <p class="show-card__text">Веду ваши мероприятия как авторское шоу — с юмором, интерактивом и живым общением. Не сценарий с листа.</p>
+          <ul class="show-card__list">
+            <li>Корпоративы</li>
+            <li>Девишники</li>
+            <li>Дни рождения</li>
+            <li>Вечеринки</li>
+          </ul>
           <a href="#contacts" class="show-card__link">Забронировать →</a>
         </div>
       </article>
       <article class="show-card reveal">
         <div class="show-card__img-wrap">
-          <img src="images/IMG_20261004_003016_548.jpg" alt="Стенд ап поэзия 18+" class="show-card__img">
+          <img src="images/0ZfLsyR87tM.jpg" alt="Коллаборации" class="show-card__img">
         </div>
         <div class="show-card__body">
-          <p class="show-card__tag">Стенд ап · 18+</p>
-          <h3 class="show-card__title">«Об этом вслух не говорят»</h3>
-          <p class="show-card__text">Программа о том, о чём молчат. Смешно и неловко одновременно. Только 18+.</p>
-          <a href="#contacts" class="show-card__link">Забронировать →</a>
+          <p class="show-card__tag">Коллаборации</p>
+          <h3 class="show-card__title">Совместные проекты</h3>
+          <p class="show-card__text">Коллаборации с артистами, музыкантами, ведущими и площадками. Создаю уникальные форматы под задачу.</p>
+          <ul class="show-card__list">
+            <li>С музыкантами</li>
+            <li>С артистами</li>
+            <li>С площадками</li>
+            <li>С брендами</li>
+          </ul>
+          <a href="#contacts" class="show-card__link">Обсудить →</a>
         </div>
       </article>
     </div>
