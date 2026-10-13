@@ -93,7 +93,6 @@
   .section__title em { font-style: italic; color: var(--red); font-weight: 300; }
   .body-text { font-size: 0.98rem; line-height: 1.95; color: var(--white-soft); font-weight: 300; }
 
-  /* ===== ШАПКА ===== */
   .header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 26px 0;
@@ -149,7 +148,6 @@
     .logo__sub { font-size: 0.4rem; letter-spacing: 0.4em; }
   }
 
-  /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
   .mobile-menu {
     position: fixed; inset: 0; z-index: 150;
     background: linear-gradient(160deg, #050505 0%, #0a0a0a 60%, #101010 100%);
@@ -175,14 +173,12 @@
   .mobile-menu.is-open .mobile-menu__caption { animation: menuIn .6s ease .56s forwards; }
   @keyframes menuIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ===== КНОПКИ ===== */
   .btn { display: inline-block; padding: 19px 44px; font-size: 0.68rem; letter-spacing: 0.34em; text-transform: uppercase; font-weight: 500; transition: all .45s ease; border: var(--line-hair) solid transparent; position: relative; overflow: hidden; }
   .btn--primary { background: var(--gold); color: #0a0a0a; border-color: var(--gold); }
   .btn--primary:hover { background: var(--red); border-color: var(--red); color: #fff; transform: translateY(-2px); box-shadow: 0 20px 40px rgba(176, 24, 46, 0.3); }
   .btn--outline { background: transparent; color: var(--white); border-color: rgba(246, 244, 240, 0.25); }
   .btn--outline:hover { background: var(--white); color: #0a0a0a; border-color: var(--white); transform: translateY(-2px); }
 
-  /* ===== HERO ===== */
   .hero { position: relative; min-height: 100vh; padding: 160px 0 100px; display: flex; align-items: center; background: var(--bg); overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 78% 22%, rgba(176, 24, 46, 0.07), transparent 55%); pointer-events: none; }
   .hero__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 2; }
@@ -221,7 +217,6 @@
     .hero__photo-inner { max-width: 100%; aspect-ratio: 1 / 1; }
   }
 
-  /* ===== БЕГУЩАЯ СТРОКА ===== */
   .marquee { background: var(--bg-3); border-top: var(--line-hair) solid var(--line); border-bottom: var(--line-hair) solid var(--line); overflow: hidden; padding: 30px 0; }
   .marquee__track { display: flex; gap: 50px; white-space: nowrap; animation: marquee 45s linear infinite; align-items: center; }
   .marquee__track span { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.34em; color: var(--white); text-transform: uppercase; font-weight: 300; font-style: italic; }
@@ -234,7 +229,6 @@
   .section__head .eyebrow { display: inline-flex; margin-bottom: 26px; }
   .section__head .section__title { display: block; }
 
-  /* ===== АФИША ===== */
   .afisha { background: var(--bg); padding: 120px 0 20px; }
   .afisha__inner { max-width: 1100px; margin: 0 auto; text-align: center; }
   .afisha__inner .eyebrow { display: inline-flex; margin-bottom: 44px; }
@@ -252,7 +246,6 @@
   .afisha__caption { margin-top: 28px; font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--white-dim); letter-spacing: 0.08em; }
   @media (max-width: 900px) { .afisha { padding: 80px 0 20px; } .afisha__caption { font-size: 0.9rem; } }
 
-  /* ===== О ПРОЕКТЕ ===== */
   .about { background: var(--bg-3); }
   .about__inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; align-items: center; }
   .about__photo { position: relative; }
@@ -284,7 +277,6 @@
     .play-btn { bottom: 16px; left: 16px; padding: 12px 18px; font-size: 0.58rem; letter-spacing: 0.28em; }
   }
 
-  /* ===== НАПРАВЛЕНИЯ ===== */
   .services__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
   .service-card { background: var(--bg-2); border: var(--line-hair) solid var(--line); padding: 64px 54px; position: relative; overflow: hidden; transition: all .5s ease; }
   .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: var(--line-hair); background: linear-gradient(to right, var(--red), var(--gold)); transform: scaleX(0); transform-origin: left; transition: transform .6s ease; }
@@ -297,7 +289,6 @@
   .service-card__list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 0.9rem; top: 12px; opacity: 0.7; }
   @media (max-width: 900px) { .services__grid { grid-template-columns: 1fr; gap: 24px; } .service-card { padding: 44px 30px; } }
 
-  /* ===== ШОУ (единый богатый стиль) ===== */
   .shows { background: var(--bg-3); }
   .shows__grid { display: grid; grid-template-columns: 1fr; gap: 50px; }
 
@@ -489,7 +480,6 @@
     .show-card__title { margin-bottom: 24px; }
   }
 
-  /* ===== ВИДЕО ===== */
   .clip { background: var(--bg-3); }
   .clip__grid {
     display: grid;
@@ -513,13 +503,14 @@
     background: #000;
   }
   .clip__label {
-    margin-top: 22px;
+    margin-top: 26px;
     text-align: center;
     font-family: var(--font-display);
     font-style: italic;
     font-size: 1.15rem;
     color: var(--white);
     letter-spacing: 0.06em;
+    line-height: 1.4;
   }
   .clip__label span {
     display: block;
@@ -529,13 +520,12 @@
     text-transform: uppercase;
     color: var(--gold);
     font-style: normal;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   @media (max-width: 900px) {
     .clip__grid { grid-template-columns: 1fr; gap: 48px; }
   }
 
-  /* ===== ГАЛЕРЕЯ (КАРУСЕЛЬ) ===== */
   .gallery { background: var(--bg-3); padding-bottom: 100px; }
   .gallery .section__head { margin-bottom: 60px; }
 
@@ -601,7 +591,6 @@
     .gallery-carousel__item { flex: 0 0 200px; }
   }
 
-  /* ===== ГЕОГРАФИЯ ===== */
   .geo { background: var(--bg-3); text-align: center; }
   .geo__inner { max-width: 900px; margin: 0 auto; }
   .geo__inner .eyebrow { display: inline-flex; margin-bottom: 40px; }
@@ -609,7 +598,6 @@
   .geo__cities span { color: var(--gold); margin: 0 10px; }
   .geo__note { margin-top: 40px; font-size: 0.7rem; color: var(--white-dim); letter-spacing: 0.35em; text-transform: uppercase; font-weight: 400; }
 
-  /* ===== КОНТАКТЫ ===== */
   .contacts { background: var(--bg-3); border-top: var(--line-hair) solid var(--red); }
   .contacts__head { text-align: center; margin-bottom: 90px; }
   .contacts__head .eyebrow { display: inline-flex; margin-bottom: 26px; }
@@ -628,19 +616,16 @@
   .contacts__socials a:hover span { color: var(--red); }
   @media (max-width: 900px) { .contacts__grid { grid-template-columns: 1fr; gap: 50px; } }
 
-  /* ===== ПРАВОВОЙ БЛОК ===== */
   .legal { background: var(--bg-3); padding: 50px 0 70px; text-align: center; border-top: var(--line-hair) solid var(--line-soft); }
   .legal__text { font-size: 0.68rem; color: var(--white-dim); letter-spacing: 0.2em; line-height: 2; max-width: 720px; margin: 0 auto; text-transform: uppercase; font-weight: 400; }
   .legal__text strong { color: var(--red); font-weight: 500; letter-spacing: 0.3em; }
 
-  /* ===== FOOTER ===== */
   .footer { background: var(--bg); padding: 60px 0 50px; border-top: var(--line-hair) solid var(--line); text-align: center; }
   .footer__logo { font-family: var(--font-accent); font-size: 1rem; letter-spacing: 0.45em; color: var(--gold); padding-left: 0.45em; }
   .footer__sub { font-size: 0.5rem; letter-spacing: 0.5em; color: var(--white-dim); margin-top: 8px; text-transform: uppercase; font-weight: 400; }
   .footer__signature { font-family: var(--font-hand); font-size: 2.3rem; color: var(--red); margin-top: 28px; transform: rotate(-2deg); display: inline-block; text-shadow: 0 0 20px rgba(176, 24, 46, 0.45); }
   .footer__copy { margin-top: 32px; font-size: 0.6rem; color: var(--white-dim); letter-spacing: 0.28em; text-transform: uppercase; font-weight: 400; }
 
-  /* ===== ЛАЙТБОКС ===== */
   .lightbox {
     position: fixed;
     inset: 0;
@@ -696,7 +681,6 @@
     .lightbox__close { top: 16px; right: 16px; width: 44px; height: 44px; font-size: 1.3rem; }
   }
 
-  /* ===== REVEAL ===== */
   .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1.1s ease, transform 1.1s ease; }
   .reveal.is-visible { opacity: 1; transform: translateY(0); }
 </style>
@@ -706,7 +690,6 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-trail" id="cursorTrail"></div>
 
-<!-- ШАПКА -->
 <header class="header" id="header">
   <div class="container header__inner">
     <a href="#" class="logo">
@@ -737,7 +720,6 @@
   </div>
 </header>
 
-<!-- МОБИЛЬНОЕ МЕНЮ -->
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu__inner">
     <a href="#about" class="mobile-menu__link">О проекте</a>
@@ -750,7 +732,6 @@
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero" id="hero">
   <div class="container hero__inner">
     <div class="hero__content">
@@ -770,7 +751,6 @@
   </div>
 </section>
 
-<!-- БЕГУЩАЯ СТРОКА -->
 <div class="marquee">
   <div class="marquee__track">
     <span>Поэзия</span><span class="marquee__dot">◆</span>
@@ -786,7 +766,6 @@
   </div>
 </div>
 
-<!-- АФИША -->
 <section class="afisha">
   <div class="container afisha__inner">
     <p class="eyebrow reveal">Афиша</p>
@@ -797,7 +776,6 @@
   </div>
 </section>
 
-<!-- О ПРОЕКТЕ -->
 <section class="about section" id="about">
   <div class="container about__inner">
     <div class="about__photo reveal">
@@ -824,7 +802,6 @@
   </div>
 </section>
 
-<!-- НАПРАВЛЕНИЯ -->
 <section class="services section" id="services">
   <div class="container">
     <div class="section__head reveal">
@@ -859,7 +836,6 @@
   </div>
 </section>
 
-<!-- ШОУ И ВЫСТУПЛЕНИЯ -->
 <section class="shows section" id="shows">
   <div class="container">
     <div class="section__head reveal">
@@ -953,19 +929,21 @@
     </div>
 
     <div class="clip__grid">
+      <!-- Первое видео (образ) — превью: первый кадр -->
       <div class="clip__item reveal">
         <div class="clip__wrap">
-          <video class="clip__video" controls preload="metadata" playsinline poster="images/klip-preview.jpg.png">
-            <source src="images/Клип.MP4" type="video/mp4">
+          <video class="clip__video" controls preload="metadata" playsinline>
+            <source src="images/Video-2(1).mp4#t=0.1" type="video/mp4">
             Ваш браузер не поддерживает видео.
           </video>
         </div>
         <p class="clip__label">
-          <span>Клип</span>
-          Со звуком — совсем другое
+          <span>Образ</span>
+          Дерзкий контраст. Со вкусом.
         </p>
       </div>
 
+      <!-- Второе видео (с мероприятия) — превью: кадр 0:30, воспроизведение с 0:00 -->
       <div class="clip__item reveal">
         <div class="clip__wrap">
           <video class="clip__video" id="eventVideo" controls preload="metadata" playsinline>
@@ -982,7 +960,6 @@
   </div>
 </section>
 
-<!-- ГАЛЕРЕЯ (КАРУСЕЛЬ) -->
 <section class="gallery section" id="gallery">
   <div class="container">
     <div class="section__head reveal">
@@ -1032,7 +1009,6 @@
   </div>
 </section>
 
-<!-- ГЕОГРАФИЯ -->
 <section class="geo section">
   <div class="container geo__inner">
     <p class="eyebrow reveal">География выступлений</p>
@@ -1044,7 +1020,6 @@
   </div>
 </section>
 
-<!-- КОНТАКТЫ -->
 <section class="contacts section" id="contacts">
   <div class="container contacts__inner">
     <div class="contacts__head reveal">
@@ -1077,7 +1052,6 @@
   </div>
 </section>
 
-<!-- ПРАВОВОЙ БЛОК -->
 <section class="legal">
   <div class="container">
     <p class="legal__text">
@@ -1087,7 +1061,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <p class="footer__logo">YANA SCHATZ</p>
@@ -1097,14 +1070,12 @@
   </div>
 </footer>
 
-<!-- ЛАЙТБОКС -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox__close" aria-label="Закрыть">×</button>
   <img class="lightbox__img" src="" alt="">
 </div>
 
 <script>
-/* ===== КАСТОМНЫЙ КУРСОР ===== */
 (function() {
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   const cursor = document.getElementById('cursor');
@@ -1131,7 +1102,6 @@
   });
 })();
 
-/* ===== ШАПКА: BLUR ПРИ СКРОЛЛЕ ===== */
 (function() {
   const header = document.getElementById('header');
   if (!header) return;
@@ -1143,7 +1113,6 @@
   handleScroll();
 })();
 
-/* ===== МОБИЛЬНОЕ МЕНЮ ===== */
 (function() {
   const hamburger = document.getElementById('hamburger');
   const menu = document.getElementById('mobileMenu');
@@ -1159,7 +1128,6 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu.classList.contains('is-open')) toggleMenu(false); });
 })();
 
-/* ===== REVEAL ПРИ СКРОЛЛЕ ===== */
 (function() {
   const elements = document.querySelectorAll('.reveal');
   if (!elements.length) return;
@@ -1174,7 +1142,6 @@
   elements.forEach(el => observer.observe(el));
 })();
 
-/* ===== ГАЛЕРЕЯ: загорается при появлении ===== */
 (function() {
   const carousel = document.getElementById('galleryCarousel');
   if (!carousel) return;
@@ -1189,7 +1156,6 @@
   observer.observe(carousel);
 })();
 
-/* ===== КАРУСЕЛЬ: бесконечная + свайп + автовозобновление ===== */
 (function() {
   const carousel = document.getElementById('galleryCarousel');
   const track = document.getElementById('galleryTrack');
@@ -1219,9 +1185,7 @@
   let resumeTimer = null;
   let lastTime = 0;
 
-  function applyPosition() {
-    track.style.transform = `translate3d(${position}px, 0, 0)`;
-  }
+  function applyPosition() { track.style.transform = `translate3d(${position}px, 0, 0)`; }
 
   function recalc() {
     const first = track.children[0];
@@ -1244,7 +1208,6 @@
     if (!lastTime) lastTime = time;
     const dt = Math.min((time - lastTime) / 1000, 0.1);
     lastTime = time;
-
     if (!isPaused) {
       position -= speed * dt;
       wrapPosition();
@@ -1253,10 +1216,7 @@
     requestAnimationFrame(tick);
   }
 
-  requestAnimationFrame(() => {
-    recalc();
-    requestAnimationFrame(tick);
-  });
+  requestAnimationFrame(() => { recalc(); requestAnimationFrame(tick); });
 
   function getPoint(e) {
     if (e.touches && e.touches[0]) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
@@ -1268,13 +1228,11 @@
     const p = getPoint(e);
     const dx = p.x - startX;
     const dy = p.y - startY;
-
     if (!dragDirection) {
       if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
         dragDirection = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
       }
     }
-
     if (dragDirection === 'h') {
       if (Math.abs(dx) > 10) dragMoved = true;
       position = startPosition + dx;
@@ -1292,12 +1250,8 @@
     document.removeEventListener('mouseup', endDrag);
     document.removeEventListener('touchend', endDrag);
     document.removeEventListener('touchcancel', endDrag);
-
     if (resumeTimer) clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(() => {
-      isPaused = false;
-      lastTime = 0;
-    }, 2000);
+    resumeTimer = setTimeout(() => { isPaused = false; lastTime = 0; }, 2000);
   }
 
   function startDrag(e) {
@@ -1306,11 +1260,9 @@
     dragDirection = null;
     dragMoved = false;
     const p = getPoint(e);
-    startX = p.x;
-    startY = p.y;
+    startX = p.x; startY = p.y;
     startPosition = position;
     if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
-
     document.addEventListener('mousemove', onDrag);
     document.addEventListener('touchmove', onDrag, { passive: false });
     document.addEventListener('mouseup', endDrag);
@@ -1321,33 +1273,23 @@
   carousel.addEventListener('mousedown', startDrag);
   carousel.addEventListener('touchstart', startDrag, { passive: true });
 
-  // Клик по фото — открываем лайтбокс, если не было перетаскивания
   track.querySelectorAll('.gallery-carousel__item').forEach(item => {
     item.addEventListener('click', () => {
       if (dragMoved) return;
       const img = item.querySelector('img');
-      if (img && window.openLightbox) {
-        window.openLightbox(img.src, img.alt);
-      }
+      if (img && window.openLightbox) window.openLightbox(img.src, img.alt);
     });
   });
 
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      recalc();
-      lastTime = 0;
-    }, 150);
+    resizeTimer = setTimeout(() => { recalc(); lastTime = 0; }, 150);
   });
 
-  window.addEventListener('load', () => {
-    recalc();
-    lastTime = 0;
-  });
+  window.addEventListener('load', () => { recalc(); lastTime = 0; });
 })();
 
-/* ===== ЛАЙТБОКС ===== */
 (function() {
   const lightbox = document.getElementById('lightbox');
   const img = lightbox.querySelector('.lightbox__img');
@@ -1355,8 +1297,7 @@
   if (!lightbox || !img || !closeBtn) return;
 
   function open(src, alt) {
-    img.src = src;
-    img.alt = alt || '';
+    img.src = src; img.alt = alt || '';
     lightbox.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
@@ -1368,51 +1309,30 @@
 
   window.openLightbox = open;
 
-  // Все фото в карточках коллабораций
   document.querySelectorAll('.show-card__gallery-item img').forEach(el => {
     el.parentElement.addEventListener('click', () => open(el.src, el.alt));
   });
 
-  // Кнопка закрытия
   closeBtn.addEventListener('click', (e) => { e.stopPropagation(); close(); });
-
-  // Клик по фону — закрыть
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) close();
-  });
-
-  // Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) close();
-  });
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('is-open')) close(); });
 })();
 
-/* ===== ВИДЕО С МЕРОПРИЯТИЯ: превью с 0:30, воспроизведение с 0:00 ===== */
 (function() {
   const video = document.getElementById('eventVideo');
   if (!video) return;
-
   let firstPlayDone = false;
-
   video.addEventListener('loadedmetadata', () => {
-    try {
-      if (video.duration && video.duration > 30) {
-        video.currentTime = 30;
-      }
-    } catch (e) {}
+    try { if (video.duration && video.duration > 30) video.currentTime = 30; } catch (e) {}
   });
-
   video.addEventListener('play', () => {
     if (!firstPlayDone) {
       firstPlayDone = true;
-      if (video.currentTime > 1) {
-        try { video.currentTime = 0; } catch (e) {}
-      }
+      if (video.currentTime > 1) { try { video.currentTime = 0; } catch (e) {} }
     }
   });
 })();
 
-/* ===== ПАРАЛЛАКС HERO ===== */
 (function() {
   const heroPhoto = document.getElementById('heroPhoto');
   if (!heroPhoto) return;
@@ -1426,7 +1346,6 @@
   window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(parallax); ticking = true; } }, { passive: true });
 })();
 
-/* ===== PLAY-КНОПКА ===== */
 (function() {
   const playBtn = document.getElementById('playBtn');
   if (!playBtn) return;
@@ -1437,7 +1356,6 @@
   });
 })();
 
-/* ===== ПЛАВНЫЙ СКРОЛЛ ===== */
 (function() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
