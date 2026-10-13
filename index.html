@@ -264,9 +264,23 @@
     font-size: 0.64rem; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 500;
     transition: all .35s ease;
   }
-  .play-btn svg { width: 14px; height: 14px; }
+  .play-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
   .play-btn:hover { background: var(--gold); color: #0a0a0a; }
   .play-btn.is-playing { background: var(--red); color: #fff; border-color: var(--red); }
+  .play-btn.is-playing .play-btn__dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    margin-left: 4px;
+    animation: pulseDot 1.2s ease-in-out infinite;
+  }
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.7); }
+  }
+  .play-btn__dot { display: none; }
   .about__content .eyebrow { display: inline-flex; margin-bottom: 28px; }
   .about__content .section__title { margin-bottom: 44px; }
   .about__content .body-text { margin-bottom: 26px; }
@@ -781,9 +795,16 @@
     <div class="about__photo reveal">
       <img src="images/Yana.png" alt="Яна Шатц" class="about__img">
       <button class="play-btn" id="playBtn" aria-label="Слушать голос">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
         <span class="play-btn__text">Слушать голос</span>
+        <span class="play-btn__dot"></span>
       </button>
+      <audio id="voiceAudio" preload="metadata">
+        <source src="images/Golos.m4a" type="audio/mp4">
+        <source src="images/Golos.m4a" type="audio/m4a">
+        <source src="images/Golos.m4a" type="audio/x-m4a">
+        Ваш браузер не поддерживает аудио.
+      </audio>
     </div>
     <div class="about__content">
       <p class="eyebrow reveal">О проекте</p>
@@ -920,7 +941,6 @@
   </div>
 </section>
 
-<!-- ВИДЕО -->
 <section class="clip section" id="clip">
   <div class="container">
     <div class="section__head reveal">
@@ -929,7 +949,6 @@
     </div>
 
     <div class="clip__grid">
-      <!-- Первое видео (образ) — превью: первый кадр -->
       <div class="clip__item reveal">
         <div class="clip__wrap">
           <video class="clip__video" controls preload="metadata" playsinline>
@@ -943,7 +962,6 @@
         </p>
       </div>
 
-      <!-- Второе видео (с мероприятия) — превью: кадр 0:30, воспроизведение с 0:00 -->
       <div class="clip__item reveal">
         <div class="clip__wrap">
           <video class="clip__video" id="eventVideo" controls preload="metadata" playsinline>
@@ -1334,6 +1352,59 @@
 })();
 
 (function() {
+  const playBtn = document.getElementById('playBtn');
+  const audio = document.getElementById('voiceAudio');
+  if (!playBtn || !audio) return;
+
+  const textEl = playBtn.querySelector('.play-btn__text');
+  const iconEl = document.getElementById('playIcon');
+
+  const iconPlay = '<path d="M8 5v14l11-7z"/>';
+  const iconPause = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+
+  function setPlaying(playing) {
+    if (playing) {
+      playBtn.classList.add('is-playing');
+      textEl.textContent = 'Стоп';
+      iconEl.innerHTML = iconPause;
+    } else {
+      playBtn.classList.remove('is-playing');
+      textEl.textContent = 'Слушать голос';
+      iconEl.innerHTML = iconPlay;
+    }
+  }
+
+  playBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (audio.paused) {
+      document.querySelectorAll('audio, video').forEach(el => {
+        if (el !== audio && !el.paused) {
+          try { el.pause(); } catch (err) {}
+        }
+      });
+
+      const playPromise = audio.play();
+      if (playPromise && typeof playPromise.then === 'function') {
+        playPromise.then(() => setPlaying(true)).catch(() => setPlaying(false));
+      } else {
+        setPlaying(true);
+      }
+    } else {
+      audio.pause();
+    }
+  });
+
+  audio.addEventListener('play', () => setPlaying(true));
+  audio.addEventListener('pause', () => setPlaying(false));
+  audio.addEventListener('ended', () => {
+    setPlaying(false);
+    audio.currentTime = 0;
+  });
+})();
+
+(function() {
   const heroPhoto = document.getElementById('heroPhoto');
   if (!heroPhoto) return;
   let ticking = false;
@@ -1344,16 +1415,6 @@
     ticking = false;
   }
   window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(parallax); ticking = true; } }, { passive: true });
-})();
-
-(function() {
-  const playBtn = document.getElementById('playBtn');
-  if (!playBtn) return;
-  playBtn.addEventListener('click', () => {
-    playBtn.classList.toggle('is-playing');
-    const isPlaying = playBtn.classList.contains('is-playing');
-    playBtn.querySelector('.play-btn__text').textContent = isPlaying ? 'Стоп' : 'Слушать голос';
-  });
 })();
 
 (function() {
