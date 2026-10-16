@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -291,6 +292,117 @@
     .play-btn { bottom: 16px; left: 16px; padding: 12px 18px; font-size: 0.58rem; letter-spacing: 0.28em; }
   }
 
+  .gallery { background: var(--bg); padding: 120px 0 60px; }
+  .gallery .section__head { margin-bottom: 60px; }
+
+  .gallery-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 30px 0;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+  .gallery-carousel__track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+  .gallery-carousel__item {
+    flex: 0 0 320px;
+    margin-right: 18px;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    position: relative;
+    background: #0a0a0a;
+    transform: translateZ(0);
+    cursor: zoom-in;
+  }
+  .gallery-carousel__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(100%) contrast(1.05);
+    transition: filter 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+  .gallery-carousel__item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 0 solid var(--gold);
+    transition: border-width .5s ease;
+    pointer-events: none;
+  }
+  .gallery-carousel__item:hover img { transform: scale(1.05); }
+  .gallery-carousel__item:hover::after { border-width: var(--line-hair); }
+
+  .gallery-carousel.is-visible .gallery-carousel__item img {
+    filter: grayscale(0%) contrast(1.05);
+  }
+
+  @media (max-width: 900px) {
+    .gallery-carousel__item { flex: 0 0 240px; margin-right: 12px; }
+  }
+  @media (max-width: 500px) {
+    .gallery-carousel__item { flex: 0 0 200px; }
+  }
+
+  .clip { background: var(--bg-3); }
+  .clip__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .clip__item { position: relative; }
+  .clip__wrap {
+    position: relative;
+    background: #000;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    border: var(--line-hair) solid rgba(201, 169, 97, 0.25);
+  }
+  .clip__video {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: #000;
+  }
+  .clip__label {
+    margin-top: 26px;
+    text-align: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--white);
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+  }
+  .clip__label span {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 900px) {
+    .clip__grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+
   .services__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
   .service-card { background: var(--bg-2); border: var(--line-hair) solid var(--line); padding: 64px 54px; position: relative; overflow: hidden; transition: all .5s ease; }
   .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: var(--line-hair); background: linear-gradient(to right, var(--red), var(--gold)); transform: scaleX(0); transform-origin: left; transition: transform .6s ease; }
@@ -468,6 +580,8 @@
     object-fit: cover;
     object-position: center;
     transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    -webkit-user-drag: none;
   }
   .show-card__gallery-item:hover img { transform: scale(1.08); }
   .show-card__gallery-item::after {
@@ -492,117 +606,6 @@
     .show-card__body { padding: 40px 26px; }
     .show-card__tag { margin-bottom: 24px; }
     .show-card__title { margin-bottom: 24px; }
-  }
-
-  .clip { background: var(--bg-3); }
-  .clip__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .clip__item { position: relative; }
-  .clip__wrap {
-    position: relative;
-    background: #000;
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
-    overflow: hidden;
-    border: var(--line-hair) solid rgba(201, 169, 97, 0.25);
-  }
-  .clip__video {
-    width: 100%;
-    height: auto;
-    display: block;
-    background: #000;
-  }
-  .clip__label {
-    margin-top: 26px;
-    text-align: center;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.15rem;
-    color: var(--white);
-    letter-spacing: 0.06em;
-    line-height: 1.4;
-  }
-  .clip__label span {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 0.62rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-style: normal;
-    margin-bottom: 10px;
-  }
-  @media (max-width: 900px) {
-    .clip__grid { grid-template-columns: 1fr; gap: 48px; }
-  }
-
-  .gallery { background: var(--bg-3); padding-bottom: 100px; }
-  .gallery .section__head { margin-bottom: 60px; }
-
-  .gallery-carousel {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 30px 0;
-    touch-action: pan-y;
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  }
-  .gallery-carousel__track {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    will-change: transform;
-    backface-visibility: hidden;
-    transform: translate3d(0, 0, 0);
-  }
-  .gallery-carousel__item {
-    flex: 0 0 320px;
-    margin-right: 18px;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    position: relative;
-    background: #0a0a0a;
-    transform: translateZ(0);
-    cursor: zoom-in;
-  }
-  .gallery-carousel__item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    filter: grayscale(100%) contrast(1.05);
-    transition: filter 1.8s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
-    pointer-events: none;
-    -webkit-user-drag: none;
-  }
-  .gallery-carousel__item::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 0 solid var(--gold);
-    transition: border-width .5s ease;
-    pointer-events: none;
-  }
-  .gallery-carousel__item:hover img { transform: scale(1.05); }
-  .gallery-carousel__item:hover::after { border-width: var(--line-hair); }
-
-  .gallery-carousel.is-visible .gallery-carousel__item img {
-    filter: grayscale(0%) contrast(1.05);
-  }
-
-  @media (max-width: 900px) {
-    .gallery-carousel__item { flex: 0 0 240px; margin-right: 12px; }
-  }
-  @media (max-width: 500px) {
-    .gallery-carousel__item { flex: 0 0 200px; }
   }
 
   .geo { background: var(--bg-3); text-align: center; }
@@ -655,21 +658,25 @@
     cursor: zoom-out;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    touch-action: none;
   }
   .lightbox.is-open { opacity: 1; visibility: visible; }
   .lightbox__img {
     max-width: 95vw;
-    max-height: 92vh;
+    max-height: 88vh;
     width: auto;
     height: auto;
     object-fit: contain;
     box-shadow: 0 40px 120px rgba(0, 0, 0, 0.9);
     border: var(--line-hair) solid rgba(201, 169, 97, 0.35);
     transform: scale(0.94);
-    transition: transform .5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform .5s cubic-bezier(0.22, 1, 0.36, 1), opacity .25s ease;
     cursor: default;
+    user-select: none;
+    -webkit-user-drag: none;
   }
   .lightbox.is-open .lightbox__img { transform: scale(1); }
+
   .lightbox__close {
     position: absolute;
     top: 28px;
@@ -686,13 +693,64 @@
     justify-content: center;
     cursor: pointer;
     transition: all .35s ease;
-    z-index: 2;
+    z-index: 3;
     font-family: var(--font-body);
   }
   .lightbox__close:hover { background: var(--gold); color: #0a0a0a; border-color: var(--gold); }
+
+  .lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 64px;
+    height: 64px;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: var(--line-hair) solid rgba(201, 169, 97, 0.4);
+    color: var(--gold);
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .35s ease;
+    z-index: 3;
+    font-family: var(--font-body);
+    user-select: none;
+  }
+  .lightbox__prev { left: 28px; }
+  .lightbox__next { right: 28px; }
+  .lightbox__nav:hover { background: var(--gold); color: #0a0a0a; border-color: var(--gold); }
+  .lightbox__nav.is-hidden { display: none; }
+
+  .lightbox__counter {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    z-index: 3;
+    padding: 8px 18px;
+    border: var(--line-hair) solid rgba(201, 169, 97, 0.3);
+    background: rgba(10, 10, 10, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .lightbox__counter.is-hidden { display: none; }
+
   @media (max-width: 640px) {
     .lightbox { padding: 20px; }
     .lightbox__close { top: 16px; right: 16px; width: 44px; height: 44px; font-size: 1.3rem; }
+    .lightbox__nav { width: 48px; height: 48px; font-size: 1.5rem; }
+    .lightbox__prev { left: 10px; }
+    .lightbox__next { right: 10px; }
+    .lightbox__counter { top: 22px; font-size: 0.62rem; padding: 6px 14px; letter-spacing: 0.25em; }
+    .lightbox__img { max-height: 82vh; }
   }
 
   .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1.1s ease, transform 1.1s ease; }
@@ -823,6 +881,89 @@
   </div>
 </section>
 
+<section class="gallery section" id="gallery">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Фото</p>
+      <h2 class="section__title">Галерея</h2>
+    </div>
+  </div>
+
+  <div class="gallery-carousel reveal" id="galleryCarousel">
+    <div class="gallery-carousel__track" id="galleryTrack">
+
+      <figure class="gallery-carousel__item"><img src="images/IMG_2788.WEBP" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_2789.WEBP" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_2787.JPG" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_213811.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_213849.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/eQkjnxHFN6Y.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/Nov.JPG" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_211601.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_211753.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_212101.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_212211.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IaKe-DAR2GQ.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_212533.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/LY0eSVKLmvE.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/PcGitWjGLMA.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_212616.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_2786.WEBP" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_213030.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/ud39vwLH0Mc.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_212713.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_213112.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/ro-IRyYLz4E.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_212837.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_213217.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_213358.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_213457.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_213616.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/_OA0T6sMp9g.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/IMG_20261016_213646.jpg" alt="Яна Шатц"></figure>
+      <figure class="gallery-carousel__item"><img src="images/D5bnlJRz2yw.jpg" alt="Яна Шатц"></figure>
+
+    </div>
+  </div>
+</section>
+
+<section class="clip section" id="clip">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Видео</p>
+      <h2 class="section__title">Посмотри</h2>
+    </div>
+
+    <div class="clip__grid">
+      <div class="clip__item reveal">
+        <div class="clip__wrap">
+          <video class="clip__video" controls preload="metadata" playsinline>
+            <source src="images/Video-2(1).mp4#t=0.1" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+        <p class="clip__label">
+          <span>Образ</span>
+          Дерзкий контраст. Со вкусом.
+        </p>
+      </div>
+
+      <div class="clip__item reveal">
+        <div class="clip__wrap">
+          <video class="clip__video" id="eventVideo" controls preload="metadata" playsinline>
+            <source src="images/Video-1.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+        <p class="clip__label">
+          <span>С мероприятия</span>
+          Как это выглядит вживую
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="services section" id="services">
   <div class="container">
     <div class="section__head reveal">
@@ -906,18 +1047,18 @@
         </div>
       </article>
 
-      <article class="show-card reveal">
+      <article class="show-card reveal" data-gallery="collab">
         <div class="show-card__gallery">
-          <div class="show-card__gallery-item">
+          <div class="show-card__gallery-item" data-src="images/IMG_20261011_211408.jpg">
             <img src="images/IMG_20261011_211408.jpg" alt="Коллаборация">
           </div>
-          <div class="show-card__gallery-item">
+          <div class="show-card__gallery-item" data-src="images/IMG_20261011_211746.jpg">
             <img src="images/IMG_20261011_211746.jpg" alt="Коллаборация">
           </div>
-          <div class="show-card__gallery-item">
+          <div class="show-card__gallery-item" data-src="images/gtV3NduAQ8U.jpg">
             <img src="images/gtV3NduAQ8U.jpg" alt="Коллаборация">
           </div>
-          <div class="show-card__gallery-item">
+          <div class="show-card__gallery-item" data-src="images/Av5srWuSOJE.jpg">
             <img src="images/Av5srWuSOJE.jpg" alt="Коллаборация">
           </div>
         </div>
@@ -936,92 +1077,6 @@
           <a href="#contacts" class="show-card__link">Обсудить</a>
         </div>
       </article>
-
-    </div>
-  </div>
-</section>
-
-<section class="clip section" id="clip">
-  <div class="container">
-    <div class="section__head reveal">
-      <p class="eyebrow">Видео</p>
-      <h2 class="section__title">Посмотри</h2>
-    </div>
-
-    <div class="clip__grid">
-      <div class="clip__item reveal">
-        <div class="clip__wrap">
-          <video class="clip__video" controls preload="metadata" playsinline>
-            <source src="images/Video-2(1).mp4#t=0.1" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-          </video>
-        </div>
-        <p class="clip__label">
-          <span>Образ</span>
-          Дерзкий контраст. Со вкусом.
-        </p>
-      </div>
-
-      <div class="clip__item reveal">
-        <div class="clip__wrap">
-          <video class="clip__video" id="eventVideo" controls preload="metadata" playsinline>
-            <source src="images/Video-1.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-          </video>
-        </div>
-        <p class="clip__label">
-          <span>С мероприятия</span>
-          Как это выглядит вживую
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="gallery section" id="gallery">
-  <div class="container">
-    <div class="section__head reveal">
-      <p class="eyebrow">Фото</p>
-      <h2 class="section__title">Галерея</h2>
-    </div>
-  </div>
-
-  <div class="gallery-carousel reveal" id="galleryCarousel">
-    <div class="gallery-carousel__track" id="galleryTrack">
-
-      <figure class="gallery-carousel__item">
-        <img src="images/IMG_20261004_003016_541.jpg" alt="Яна Шатц">
-      </figure>
-      <figure class="gallery-carousel__item">
-        <img src="images/IMG_20261002_225644_625.jpg" alt="У окна">
-      </figure>
-      <figure class="gallery-carousel__item">
-        <img src="images/IMG_20261002_225644_623.jpg" alt="Силуэт">
-      </figure>
-      <figure class="gallery-carousel__item">
-        <img src="images/0ZfLsyR87tM.jpg" alt="За кулисами">
-      </figure>
-      <figure class="gallery-carousel__item">
-        <img src="images/IMG_20261004_003016_547.jpg" alt="Образ">
-      </figure>
-      <figure class="gallery-carousel__item">
-        <img src="images/photo_5334664151655194654_y.jpg" alt="Яна Шатц">
-      </figure>
-      <figure class="gallery-carousel__item">
-        <img src="images/photo_5334664151655194655_y.jpg" alt="Яна Шатц">
-      </figure>
-      <figure class="gallery-carousel__item">
-        <img src="images/AYulbytfyOw.jpg" alt="Яна Шатц">
-      </figure>
-      <figure class="gallery-carousel__item">
-        <img src="images/q8fEr2WcAnE.jpg" alt="Яна Шатц">
-      </figure>
-      <figure class="gallery-carousel__item">
-        <img src="images/olJe6Jlwd9Q.jpg" alt="Яна Шатц">
-      </figure>
-      <figure class="gallery-carousel__item">
-        <img src="images/tjLQ79RiOrc.jpg" alt="Яна Шатц">
-      </figure>
 
     </div>
   </div>
@@ -1090,6 +1145,9 @@
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox__close" aria-label="Закрыть">×</button>
+  <button class="lightbox__nav lightbox__prev" aria-label="Предыдущее">‹</button>
+  <button class="lightbox__nav lightbox__next" aria-label="Следующее">›</button>
+  <div class="lightbox__counter"><span id="lightboxCurrent">1</span> / <span id="lightboxTotal">1</span></div>
   <img class="lightbox__img" src="" alt="">
 </div>
 
@@ -1160,20 +1218,140 @@
   elements.forEach(el => observer.observe(el));
 })();
 
+/* ===== ЛАЙТБОКС ===== */
 (function() {
-  const carousel = document.getElementById('galleryCarousel');
-  if (!carousel) return;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        carousel.classList.add('is-visible');
-        observer.unobserve(carousel);
+  const lightbox = document.getElementById('lightbox');
+  const img = lightbox.querySelector('.lightbox__img');
+  const closeBtn = lightbox.querySelector('.lightbox__close');
+  const prevBtn = lightbox.querySelector('.lightbox__prev');
+  const nextBtn = lightbox.querySelector('.lightbox__next');
+  const counter = document.querySelector('.lightbox__counter');
+  const counterCurrent = document.getElementById('lightboxCurrent');
+  const counterTotal = document.getElementById('lightboxTotal');
+
+  if (!lightbox || !img) return;
+
+  let images = [];
+  let currentIndex = 0;
+
+  function updateNav() {
+    if (images.length <= 1) {
+      prevBtn.classList.add('is-hidden');
+      nextBtn.classList.add('is-hidden');
+      counter.classList.add('is-hidden');
+    } else {
+      prevBtn.classList.remove('is-hidden');
+      nextBtn.classList.remove('is-hidden');
+      counter.classList.remove('is-hidden');
+      counterCurrent.textContent = currentIndex + 1;
+      counterTotal.textContent = images.length;
+    }
+  }
+
+  function show(index) {
+    if (images.length === 0) return;
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+
+    img.style.opacity = '0';
+    setTimeout(() => {
+      img.src = images[currentIndex].src;
+      img.alt = images[currentIndex].alt || '';
+      img.style.opacity = '1';
+    }, 150);
+
+    updateNav();
+  }
+
+  function open(imageList, startIndex) {
+    images = imageList;
+    currentIndex = startIndex || 0;
+    img.src = images[currentIndex].src;
+    img.alt = images[currentIndex].alt || '';
+    img.style.opacity = '1';
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    updateNav();
+  }
+
+  function close() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      if (!lightbox.classList.contains('is-open')) {
+        img.src = '';
+        images = [];
       }
+    }, 400);
+  }
+
+  function next() { show(currentIndex + 1); }
+  function prev() { show(currentIndex - 1); }
+
+  window.openLightbox = open;
+
+  const galleryItems = document.querySelectorAll('#galleryTrack .gallery-carousel__item');
+  const galleryImages = Array.from(galleryItems).slice(0, 30).map(item => {
+    const im = item.querySelector('img');
+    return { src: im.src, alt: im.alt };
+  });
+
+  galleryItems.forEach((item, idx) => {
+    item.addEventListener('click', () => {
+      if (item._dragMoved) return;
+      open(galleryImages, idx % 30);
     });
-  }, { threshold: 0.15 });
-  observer.observe(carousel);
+  });
+
+  const collabCard = document.querySelector('.show-card[data-gallery="collab"]');
+  if (collabCard) {
+    const collabItems = collabCard.querySelectorAll('.show-card__gallery-item');
+    const collabImages = Array.from(collabItems).map(item => {
+      const im = item.querySelector('img');
+      return { src: im.src, alt: im.alt };
+    });
+
+    collabItems.forEach((item, idx) => {
+      item.addEventListener('click', () => open(collabImages, idx));
+    });
+  }
+
+  prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+  nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+  closeBtn.addEventListener('click', (e) => { e.stopPropagation(); close(); });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+
+  let startX = 0, startY = 0, isDown = false;
+  lightbox.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isDown = true;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', (e) => {
+    if (!isDown) return;
+    isDown = false;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) next(); else prev();
+    }
+  });
 })();
 
+/* ===== КАРУСЕЛЬ ГАЛЕРЕИ ===== */
 (function() {
   const carousel = document.getElementById('galleryCarousel');
   const track = document.getElementById('galleryTrack');
@@ -1293,10 +1471,8 @@
 
   track.querySelectorAll('.gallery-carousel__item').forEach(item => {
     item.addEventListener('click', () => {
-      if (dragMoved) return;
-      const img = item.querySelector('img');
-      if (img && window.openLightbox) window.openLightbox(img.src, img.alt);
-    });
+      item._dragMoved = dragMoved;
+    }, true);
   });
 
   let resizeTimer;
@@ -1308,34 +1484,7 @@
   window.addEventListener('load', () => { recalc(); lastTime = 0; });
 })();
 
-(function() {
-  const lightbox = document.getElementById('lightbox');
-  const img = lightbox.querySelector('.lightbox__img');
-  const closeBtn = lightbox.querySelector('.lightbox__close');
-  if (!lightbox || !img || !closeBtn) return;
-
-  function open(src, alt) {
-    img.src = src; img.alt = alt || '';
-    lightbox.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-  function close() {
-    lightbox.classList.remove('is-open');
-    document.body.style.overflow = '';
-    setTimeout(() => { if (!lightbox.classList.contains('is-open')) img.src = ''; }, 400);
-  }
-
-  window.openLightbox = open;
-
-  document.querySelectorAll('.show-card__gallery-item img').forEach(el => {
-    el.parentElement.addEventListener('click', () => open(el.src, el.alt));
-  });
-
-  closeBtn.addEventListener('click', (e) => { e.stopPropagation(); close(); });
-  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('is-open')) close(); });
-})();
-
+/* ===== ВИДЕО ===== */
 (function() {
   const video = document.getElementById('eventVideo');
   if (!video) return;
@@ -1351,6 +1500,7 @@
   });
 })();
 
+/* ===== АУДИО ===== */
 (function() {
   const playBtn = document.getElementById('playBtn');
   const audio = document.getElementById('voiceAudio');
@@ -1435,3 +1585,4 @@
 
 </body>
 </html>
+```
